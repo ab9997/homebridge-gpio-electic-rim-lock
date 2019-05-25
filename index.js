@@ -72,7 +72,7 @@ ElecticRimLockAccessory.prototype = {
 
 	setLockTargetState: function(state, callback) {
 		if (state == 0) {
-			this.writePin(1);
+			this.writePin(0);
 			this.log("Wait for " + this.duration + " ms");
 			var self = this;
 			setTimeout(function(){self.writePin(0)}, this.duration);
@@ -80,7 +80,7 @@ ElecticRimLockAccessory.prototype = {
 			this.lastLockTargetState = 0;
 			callback(null);
 		} else {
-			this.writePin(0);
+			this.writePin(1);
 			this.log("Set state to closed");
 			this.lastLockTargetState = 1;
 			callback(null);
